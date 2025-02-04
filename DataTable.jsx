@@ -43,9 +43,13 @@ const DataTable = () => {
     };
 
     const handleDelete = (id) => {
-        if(filterData.length === 1 && currentPage !== 1){
-            setCurrentPage(currentPage-1);
-        }
+        setData((prevData) => prevData.filter((item) => item.id !== id));
+
+       
+        if (filterData.length === 1 && currentPage !== 1) { // Adjust pagination if the last item on the current page is deleted
+            setCurrentPage(currentPage - 1);
+    }
+       
     };
 
     const handleSearchName = (e) => {
